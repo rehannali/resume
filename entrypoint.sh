@@ -2,7 +2,7 @@
 set -euo pipefail
 
 TEXFILE="$1"
-BASE="RehanCV"
+BASE="RehanAliResume"
 PDF="${BASE}.pdf"
 PNG="${BASE}.png"
 
