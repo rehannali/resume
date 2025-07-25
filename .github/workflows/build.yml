@@ -1,0 +1,54 @@
+name: Build Resume
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      BASE_NAME: ${{ vars.BASE_NAME }}
+      TEXFILE: ${{ vars.TEXFILE }}
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set dynamic env vars
+        run: |
+          echo "✅ TEXFILE is: ${TEXFILE}"
+          echo "✅ BASE_NAME is: ${BASE_NAME}"
+          echo "TEXFILE=${TEXFILE}" >> $GITHUB_ENV
+          echo "BASE_NAME=${BASE_NAME}" >> $GITHUB_ENV
+          echo "OUTPUT_NAME=${BASE_NAME}" >> $GITHUB_ENV
+
+      - name: Make build script executable
+        run: chmod +x ./build.sh
+
+      - name: Run LaTeX build inside container
+        run: |
+          ./build.sh "${TEXFILE}" --build --release --clean
+
+      - name: Upload resume artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: resume-files
+          path: |
+            ${{ env.OUTPUT_NAME }}*.pdf
+            ${{ env.OUTPUT_NAME }}*.png
+
+      - name: Create GitHub release
+        if: github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Resume Build ${{ github.run_number }}
+          tag_name: v${{ github.run_number }}
+          files: |
+            ${{ env.OUTPUT_NAME }}*.pdf
+            ${{ env.OUTPUT_NAME }}*.png
