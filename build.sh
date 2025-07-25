@@ -7,6 +7,7 @@ BUILD=false
 CLEAN=false
 BUILD_ENV=development
 TEXFILE=""
+OUTPUT_NAME="${BASE_NAME:-RehanAliResume}"
 
 usage() {
   echo "Usage: $0 [OPTIONS] <document.tex>"
@@ -38,19 +39,20 @@ done
 
 if [ "${BUILD:-false}" = true ]; then
   echo "==== Building Docker image ($BUILD_ENV mode)..."
-    docker build -t "$IMAGE_NAME" --build-arg BUILD_ENV="$BUILD_ENV" .
+    docker build -t "$IMAGE_NAME" --build-arg BUILD_ENV="$BUILD_ENV" --build-arg BASE_NAME="$OUTPUT_NAME" .
 fi
 
 # Run compilation
 echo "==== Compiling $TEXFILE in $BUILD_ENV mode..."
 docker run --rm \
     -v "$PWD":/data \
+    -e "BASE_NAME=$OUTPUT_NAME" \
     "$IMAGE_NAME" \
     "$TEXFILE"
 
 # Output results
 echo "✅ Generated files:"
-ls -lh "${TEXFILE%.tex}".{pdf,png} 2>/dev/null || true
+ls -lh "${OUTPUT_NAME}"*.pdf "${OUTPUT_NAME}"*.png 2>/dev/null || true
 
 # Cleanup if requested
 if [ "${CLEAN:-false}" = true ]; then

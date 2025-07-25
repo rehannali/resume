@@ -2,7 +2,7 @@
 set -euo pipefail
 
 TEXFILE="$1"
-BASE="RehanAliResume"
+BASE="${BASE_NAME:-RehanAliResume}"
 PDF="${BASE}.pdf"
 PNG="${BASE}.png"
 
@@ -12,11 +12,13 @@ pdflatex -jobname="$BASE" "$TEXFILE" || true
 echo "=> PDF created: $PDF"
 
 if command -v magick &> /dev/null; then
-  magick -density 300 -background white -alpha remove -trim "$PDF" "$PNG"
+  echo "Converting PDF to PNG(s) using ImageMagick..."
+  magick -density 600 -background white -alpha remove -trim "$PDF" "${OUTPUT_NAME}-%d.png"
 else
-  pdftoppm -png -r 300 "$PDF" "${BASE}"
-  mv "${BASE}-1.png" "$PNG"
+  echo "Converting PDF to PNG(s) using pdftoppm..."
+  pdftoppm -png -r 600 "$PDF" "${BASE}"
 fi
+
 
 echo "=> PNG created: $PNG"
 

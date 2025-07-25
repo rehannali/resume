@@ -1,6 +1,8 @@
 FROM ubuntu:latest
+ARG BASE_NAME=RehanAliResume
 ENV DEBIAN_FRONTEND=noninteractive \
-  BUILD_ENV=development
+  BUILD_ENV=development \
+  BASE_NAME="$BASE_NAME"
 
 RUN apt-get update && \
   apt-get install -y --no-install-recommends \
