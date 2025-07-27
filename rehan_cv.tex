@@ -94,7 +94,7 @@
 % Custom commands
 \newcommand{\resumeItem}[1]{
   \item\small{
-    {#1 \vspace{-2pt}}
+    {#1}\vspace{-2pt}
   }
 }
 
@@ -249,12 +249,140 @@
         {Sr. Principal Software Engineer iOS}{Jan 2023 -- Present}
         {A company focused on creating fintech software solutions.}
         \resumeItemListStart
-            \resumeItem{Spearheaded development of flagship financial products OneLoad and OneZapp, delivering secure iOS solutions for digital payments and banking services.}
-            \resumeItem{Collaborated with cross-functional teams to design and implement user-centric features following Agile methodologies.}
-            \resumeItem{Led technical debt reduction initiatives through systematic code refactoring and architectural improvements.}
-            \resumeItem{Optimized app performance using GCD and Operation Queues for concurrent task management.}
-            \resumeItem{Established testing standards incorporating TDD and BDD practices.}
+            \resumeItem{\textbf{Spearheaded} development of flagship financial products \textbf{OneLoad} and \textbf{OneZapp}, delivering \textbf{secure iOS solutions} for \textbf{digital payments} and \textbf{banking services}.}
+            \resumeItem{\textbf{Collaborated} with cross-functional teams to design and implement \textbf{user-centric features} following \textbf{Agile methodologies}.}
+            \resumeItem{\textbf{Led} technical debt reduction initiatives through \textbf{systematic code refactoring} and \textbf{architectural improvements}.}
+            \resumeItem{\textbf{Optimized} app performance using \textbf{GCD} and \textbf{Operation Queues} for \textbf{concurrent task management}.}
+            \resumeItem{\textbf{Established} testing standards incorporating \textbf{TDD} and \textbf{BDD practices}.}
         \resumeItemListEnd
+
+    \resumeSubheadingExperience
+        {Systems Limited}{Lahore, Pakistan}
+        {Sr. Software Engineer iOS}{Dec 2018 -- Dec 2022}
+        {A technology services and consulting company.}
+        \resumeItemListStart
+            \resumeItem{\textbf{Directed} iOS development team in delivering \textbf{enterprise-grade mobile solutions}.}
+            \resumeItem{\textbf{Architected and implemented} \textbf{payment processing framework} for third-party integrations.}
+            \resumeItem{\textbf{Pioneered} \textbf{deep linking} implementation to enhance user navigation and engagement.}
+            \resumeItem{\textbf{Engineered} data persistence solutions using \textbf{SQLite} and \textbf{SharedPreferences}.}
+            \resumeItem{\textbf{Researched and integrated} emerging technologies to maintain a \textbf{competitive edge}.}
+        \resumeItemListEnd
+
+    \resumeSubheadingExperience
+        {Developers Clan}{Lahore, Pakistan}
+        {Sr. Software Engineer}{Jan 2018 -- Dec 2018}
+        {A technology services and consulting company.}
+        \resumeItemListStart
+            \resumeItem{\textbf{Promoted} to senior role within first year, \textbf{leading a team} of 5 iOS developers.}
+            \resumeItem{\textbf{Integrated} multiple third-party SDKs including \textbf{Google Maps}, \textbf{Stripe}, and \textbf{Firebase}.}
+            \resumeItem{\textbf{Implemented} \textbf{geofencing} and \textbf{localization features} for region-specific content delivery.}
+            \resumeItem{\textbf{Designed adaptive UIs} supporting all iOS device form factors.}
+            \resumeItem{\textbf{Developed offline-first architecture} using \textbf{Core Data} and \textbf{Realm}.}
+        \resumeItemListEnd
+
+    \resumeSubheadingExperience
+        {Originator Business and I.T Solutions}{Lahore, Pakistan}
+        {Software Engineer}{Feb 2016 -- Dec 2017}
+        {An IT solutions provider offering various business-related technology services.}
+        \resumeItemListStart
+            \resumeItem{\textbf{Transitioned} from intern to full developer, contributing to multiple iOS projects.}
+            \resumeItem{\textbf{Engineered} media playback features using \textbf{AVKit} for local and streaming content.}
+            \resumeItem{\textbf{Implemented} real-time chat functionality with \textbf{Firebase backend}.}
+            \resumeItem{\textbf{Integrated} social authentication including \textbf{Facebook Login}.}
+            \resumeItem{\textbf{Developed} in-app purchase system for \textbf{digital content subscriptions}.}
+        \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+\vspace{-15pt}
+
+%-----------PROJECTS-----------------
+\section{PROJECTS}
+    \resumeSubHeadingListStart
+        \resumeProjectHeadingLink
+        {OneZapp}{https://onezapp.pk}{SwiftUI, CryptoKit, truID, Keychain, Device, SSL Pinning, Biometrics}{Apr 2025 -- Present}
+        \resumeItemListStart
+            \projectItem{Mini-App Platform Innovation}{Engineered isolated financial modules (\textbf{top-ups}, \textbf{utility bills}, \textbf{IBFT transfers}) as embeddable mini-apps, achieving \textbf{100\% transaction integrity} through sandboxed memory management and secure session binding.}
+            \projectItem{Pakistan Digital Payments}{Integrated \textbf{IBFT} for real-time bank transfers with a \textbf{99.97\% success rate}. Onboarded \textbf{15+ utility providers} (KE, SSGC, PTCL) through direct bank connections and third-party aggregator \textbf{1Link}. Implemented dynamic \textbf{PDF receipt generation}.}
+            \projectItem{Multi-Channel Wallet Funding}{Developed a \textbf{QR-based cash-in system} (40K+ agents) with instant settlement. Integrated \textbf{bank APIs} for direct wallet top-ups or via \textbf{1Link} as intermediary.}
+        \resumeItemListEnd
+        \resumeProjectHeadingLink
+        {Oneload}{https://oneloadpk.com}{Swift, UIKit, Alamofire, Siren, Charts, SwiftyBeaver, Fastlane, Biometrics, PDFKit}{Jan 2018 -- Present}
+        \resumeItemListStart
+            \projectItem{Unified Financial Ecosystem}{Processing \textbf{500K+ monthly transactions}—enabling prepaid/postpaid telco top-ups, utility bill payments, international vouchers, and BookMe travel bookings, while integrating \textbf{40K+ retail outlets} for cash deposits via kiosks.}
+            \projectItem{Deep-Linked Financial Ecosystem}{Secured and streamlined financial flows using \textbf{universal deep links} with \textbf{custom token encoding}, reducing user journey steps by \textbf{70\%} across all key transactions.}
+            \projectItem{Credit \& Shopping Ecosystem}{Developed iOS \textbf{‘Pay Later’} feature enabling auto-repayments and in-app shopping, achieving \textbf{90\% on-time repayments} with risk visualization using \textbf{Swift Charts}.}
+        \resumeItemListEnd
+        \resumeProjectHeadingLink
+        {SGSerializable}{https://github.com/rehannali/SGSerializable}{Property Wrapper, Generics, Codable, SwiftPM, CircleCI}{Oct 2022 - Present}
+        \resumeItemListStart
+            \projectItem{Developed an open-source iOS framework}{Engineered a Swift framework leveraging \textbf{PropertyWrappers} to transform Codable implementations, cutting \textbf{JSON boilerplate by 95\%} and reducing model setup time from 15 minutes to \textbf{30 seconds}.}
+            \projectItem{Streamlined Codable Implementation}{Solved issues like \textbf{type mismatches}, \textbf{optional defaults}, and \textbf{nested parsing} without requiring boilerplate code.}
+            \projectItem{Community Adoption}{\textbf{10+ production apps} adopted the framework, reducing JSON parsing crashes by \textbf{85\%}.}
+        \resumeItemListEnd
+        \resumeProjectHeadingLink
+        {Byte}{https://itunes.apple.com/us/app/byte/id889279286?mt=8}{Swift, UIKit, Realm, Cloudinary, TwitterKit, Zendesk, Helpshift, Apple Pay, Braintree}{Oct 2018}
+        \resumeItemListStart
+            \projectItem{Developed BYTE iOS App}{Created a food discovery platform with visual menus, filters, and geolocation-based deals for \textbf{1K+ restaurants}, boosting user engagement by \textbf{40\%}.}
+            \projectItem{Built Rewards \& Loyalty System}{Engineered a points-based program with \textbf{social media integration} and \textbf{real-time geofencing}, increasing user retention by \textbf{35\%}.}
+            \projectItem{Optimized Performance}{Reduced image load time by \textbf{60\%} via caching and improved app stability (crash rate $<$\textbf{0.1\%}) using Realm.}
+        \resumeItemListEnd
+        \resumeProjectHeadingLink
+        {Wish Wash}{https://itunes.apple.com/bh/app/id1178063274?mt=8}{Objective-C, AFNetworking, Payment, Multi-Lingual}{Feb 2018}
+        \resumeItemListStart
+            \projectItem{Transformed laundry service onboarding}{Developed intuitive \textbf{3-step onboarding UI} reducing customer signup time by \textbf{50\%} and increasing weekly orders to \textbf{500+}.}
+            \projectItem{Pioneered multi-service flexibility}{Enabled wash/iron/dry-clean with real-time tracking, boosting average order value by \textbf{30\%} and adoption of updates by \textbf{85\%}.}
+            \projectItem{Customer-Centric Features}{Created professional cleaner profiles with verification, improving trust scores by \textbf{40\%}.}
+        \resumeItemListEnd
+        \resumeProjectHeadingLink
+        {ShopTrav}{https://itunes.apple.com/us/app/shoptrav/id1228340656?ls=1&mt=8}{Swift, UIKit, Facebook Kit, Alamofire, CoreLocation}{Aug 2018}
+        \resumeItemListStart
+            \projectItem{Cross-Border Delivery Network}{Enabled \textbf{1,000+ successful international deliveries} by matching shoppers with travelers, optimizing schedules based on itineraries and improving logistics efficiency by \textbf{40\%}.}
+            \projectItem{User Engagement \& Trust}{Boosted user retention by \textbf{25\%} by adding \textbf{feedback-driven updates}, social interaction, and \textbf{real-time tracking accuracy improvement of 35\%} through optimized location services.}
+            \projectItem{Efficiency \& Resource Optimization}{Reduced average delivery time by \textbf{30\%}, eliminated costly shipping dependencies, and cut battery usage by \textbf{20\%} via CoreLocation enhancements.}
+        \resumeItemListEnd
+        \resumeProjectHeadingLink
+        {Pretty Pointy}{https://itunes.apple.com/us/app/id1367552041?ls=1&mt=8}{Google Calendar, Google Maps, SnapKit, LockSmith, Branch, KingFisher, Multi-Lingual}{June 2018}
+        \resumeItemListStart
+            \projectItem{Multilingual Platform Launch}{Engineered English/Arabic localization with \textbf{RTL support} and \textbf{instant switching}, expanding MENA market reach by \textbf{200\%}.}
+            \projectItem{End-to-End Booking System}{Synced calendar-based booking and built in-app chat, reducing no-shows by \textbf{25\%} and improving retention by \textbf{40\%}.}
+            \projectItem{Product Impact Focus}{Boosted review rates by \textbf{40\%}, reduced booking steps by \textbf{50\%}, and maintained \textbf{99\% uptime} for availability services.}
+        \resumeItemListEnd
+    \resumeSubHeadingListEnd
+\vspace{-15pt}
+
+%-----------STRENGTHS-----------
+% \section{STRENGTHS}
+%     \additionalItem{sitemap}{Technical Proficiency}{Proficient in various architectural patterns and methodologies, ensuring robust software development.}
+%     \additionalItem{heart}{Self-Motivated}{Self-Motivated and quick to learn new technologies, thrives in collaborative teams.}
+% \vspace{-15pt}
+
+%-----------KEY ACHIEVEMENTS & INTERESTS-----------
+\section{KEY ACHIEVEMENTS \& INTERESTS}
+    \additionalItem{check}{Leadership in Fintech Product Development}{Successfully led iOS development teams, delivering key fintech products that enhanced user experience and streamlined processes.}
+    \additionalItem{bolt}{Open Source Contribution}{Active participation in opensource development at GitHub and contributing to community discussions.}
+\vspace{-15pt}
+
+%-----------CERTIFICATIONS-----------
+\section{CERTIFICATIONS}
+    \resumeCertification
+        {iOS Development Ultimate Bootcamp}{Udemy}
+        {Certificate No: UC-3308c41b-93cb-485a-9ee3-414299f8ef59}{2016}
+    \resumeCertification
+        {Flutter \& Dart -- The Complete Guide}{Udemy}
+        {Certificate No: UC-71bce9dd-5c4c-4347-a71c-4065f6ad7b8e}{2018}
+\vspace{-15pt}
+
+%-----------EDUCATION-----------
+\section{EDUCATION}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {University of Central Punjab}{2012 – 2016}
+      {Bachelor in Computer Science}{Lahore, Pakistan}
+  \resumeSubHeadingListEnd
+
+%-------------------------------------------
+
+% -----------ADDITIONAL INFORMATION(Helper)-----------
 
 % --------Multiple Positions Heading------------
   %  \resumeSubSubheading
@@ -266,130 +394,5 @@
 
 %-------------------------------------------
 
-    \resumeSubheadingExperience
-        {Systems Limited}{Lahore, Pakistan}
-        {Sr. Software Engineer iOS}{Dec 2018 -- Dec 2022}
-        {A technology services and consulting company.}
-        \resumeItemListStart
-            \resumeItem{Directed iOS development team in delivering enterprise-grade mobile solutions.}
-            \resumeItem{Architected and implemented payment processing framework for third-party integrations.}
-            \resumeItem{Pioneered deep linking implementation to enhance user navigation and engagement.}
-            \resumeItem{Engineered data persistence solutions using SQLite and SharedPreferences.}
-            \resumeItem{Researched and integrated emerging technologies to maintain competitive edge.}
-        \resumeItemListEnd
 
-    \resumeSubheadingExperience
-        {Developers Clan}{Lahore, Pakistan}
-        {Sr. Software Engineer}{Jan 2018 -- Dec 2018}
-        {A technology services and consulting company.}
-        \resumeItemListStart
-            \resumeItem{Promoted to senior role within first year, leading team of 5 iOS developers.}
-            \resumeItem{Integrated multiple third-party SDKs including Google Maps, Stripe, and Firebase.}
-            \resumeItem{Implemented geofencing and localization features for region-specific content delivery.}
-            \resumeItem{esigned adaptive UIs supporting all iOS device form factors.}
-            \resumeItem{Developed offline-first architecture using Core Data and Realm.}
-        \resumeItemListEnd
-
-    \resumeSubheadingExperience
-        {Originator Business and I.T Solutions}{Lahore, Pakistan}
-        {Software Engineer}{Feb 2016 -- Dec 2017}
-        {An IT solutions provider offering various business-related technology services.}
-        \resumeItemListStart
-            \resumeItem{Transitioned from intern to full developer, contributing to multiple iOS projects.}
-            \resumeItem{Engineered media playback features using AVKit for local and streaming content.}
-            \resumeItem{Implemented real-time chat functionality with Firebase backend.}
-            \resumeItem{Integrated social authentication including Facebook Login.}
-            \resumeItem{Developed in-app purchase system for digital content subscriptions.}
-        \resumeItemListEnd
-
-  \resumeSubHeadingListEnd
-\vspace{-15pt}
-
-%-----------PROJECTS-----------------
-% \section{PROJECTS}
-%     \resumeSubHeadingListStart
-%         \resumeProjectHeadingLink
-%         {OneZapp}{https://onezapp.pk}{SwiftUI, CryptoKit, truID, Keychain, Device, SSL Pinning, Biometrics}{Apr 2025 -- Present}
-%         \resumeItemListStart
-%             \projectItem{Mini-App Platform Innovation}{Engineered isolated financial modules (top-ups, utility bills, IBFT transfers) as embeddable mini-apps, achieving 100\% transaction integrity through sandboxed memory management and secure session binding.}
-%             \projectItem{Pakistan Digital Payments}{Integrated IBFT for real-time bank transfers with a 99.97\% success rate. Onboarded 15+ utility providers (KE, SSGC, PTCL) through direct bank connections and third-party aggregator 1Link. Implemented dynamic PDF receipt generation.}
-%             \projectItem{Multi-Channel Wallet Funding}{Developed a QR-based agent-assisted cash-in system (40K+ agents) with instant settlement. Integrated bank APIs for direct wallet top-ups or via 1Link as a third-party intermediary.}
-%         \resumeItemListEnd
-%         \resumeProjectHeadingLink
-%         {Oneload}{https://oneloadpk.com}{Swift, UIKit, Alamofire, Siren, Charts, SwiftyBeaver, Fastlane, Biometrics, PDFKit}{Jan 2018 -- Present}
-%         \resumeItemListStart
-%             \projectItem{Unified Financial Ecosystem}{Processing 500K+ monthly transactions—enabling prepaid/postpaid telco top-ups (Mobilink/Telenor/Zong), utility bill payments, international vouchers (iTunes/Google/Xbox), and BookMe travel bookings, while integrating 40K+ retail outlets for cash deposits via a branded kiosk network.}
-%             \projectItem{Deep-Linked Financial Ecosystem}{Secured and streamlined financial flows by engineering universal deep links (100\% URI accuracy) with custom token encoding to prevent spoofing, reducing user journey steps by 70\% across bill payments, P2P transfers, and all key transactions.}
-%             \projectItem{Credit \& Shopping Ecosystem}{Developed iOS 'Pay Later' feature enabling auto-repayments and in-app shopping, driving 90\% on-time repayments with risk-aware UX. Included risk visualization via Swift Charts.}
-%         \resumeItemListEnd
-%         \resumeProjectHeadingLink
-%         {SGSerializable}{https://github.com/rehannali/SGSerializable}{Property Wrapper, Generics, Codable, SwiftPM, CircleCI}{Oct 2022 - Present}
-%         \resumeItemListStart
-%             \projectItem{Developed an open-source iOS framework}{Engineered an open-source Swift framework leveraging PropertyWrappers to transform Codable implementations, cutting JSON handling boilerplate by 95\% and reducing model setup from 15 minutes to 30 seconds.}
-%             \projectItem{Streamlined Codable Implementation}{Solved type mismatches, optional defaults, and nested parsing without boilerplate code.}
-%             \projectItem{Community Adoption}{10+ production apps integrated the framework, reducing JSON parsing crashes by 85\%.}
-%         \resumeItemListEnd
-%         \resumeProjectHeadingLink
-%         {Byte}{https://itunes.apple.com/us/app/byte/id889279286?mt=8}{Swift, UIKit, Realm, Cloudinary, TwitterKit, Zendesk, Helpshift, Apple Pay, Braintree}{Oct 2018}
-%         \resumeItemListStart
-%             \projectItem{Developed BYTE iOS App}{Created a food discovery platform with visual menus, dietary filters (gluten-free/paleo), and geolocation-based deals for 1K+ restaurants, boosting user engagement by 40\%.}
-%             \projectItem{Built Rewards \& Loyalty System}{Engineered a points-based program with social media integration (Instagram/Twitter) and real-time geofencing to verify visits, increasing user retention by 35\%.}
-%             \projectItem{Optimized Performance}{Reduced image load time by 60\% with custom caching and cut crash rates to $<$0.1\% via Realm improvements, ensuring 99.9\% uptime with Yelp API integrations.}
-%         \resumeItemListEnd
-%         \resumeProjectHeadingLink
-%         {Wish Wash}{https://itunes.apple.com/bh/app/id1178063274?mt=8}{Objective-C, AFNetworking, Payment, Multi-Lingual}{Feb 2018}
-%         \resumeItemListStart
-%             \projectItem{Transformed laundry service onboarding}{By developing an intuitive 3-step mobile interface (schedule → address → order) that reduced customer signup time by 50\% and increased weekly orders to 500+ through streamlined UX.}
-%             \projectItem{Pioneered multi-service flexibility}{By implementing wash/iron/dry-clean options with real-time progress tracking, achieving 30\% higher average order value and 85\% customer adoption of delivery updates.}
-%             \projectItem{Customer-Centric Features}{Created professional cleaner profiles with service verification, improving trust scores by 40\%}
-%         \resumeItemListEnd
-%         \resumeProjectHeadingLink
-%         {ShopTrav}{https://itunes.apple.com/us/app/shoptrav/id1228340656?ls=1&mt=8}{Swift, UIKit, Facebook Kit, Alamofire, CoreLocation}{Aug 2018}
-%         \resumeItemListStart
-%             \projectItem{Peer-to-Peer Delivery Coordination}{Enabled over 1,000+ successful international deliveries by matching travelers with shopper requests, improving cross-border logistics efficiency by 40\%.}
-%             \projectItem{User Engagement \& Marketplace Management}{Boosted user retention by 25\% through implementing feedback-driven feature updates and enhancing the social interaction between travelers and shoppers.}
-%             \projectItem{Cross-Border Logistics Optimization}{Reduced average delivery time by 30\% by aligning delivery schedules with traveler itineraries, eliminating the need for costly international shipping services.}
-%             \projectItem{Digital Platform Navigation}{Optimized location services within the app, resulting in 20\% battery usage reduction and improving real-time tracking accuracy by 35\%, enhancing user trust and experience..}
-%         \resumeItemListEnd
-%         \resumeProjectHeadingLink
-%         {Pretty Pointy}{https://itunes.apple.com/us/app/id1367552041?ls=1&mt=8}{Google Calendar, Google Maps, SnapKit, LockSmith, Branch, KingFisher, Multi-Lingual}{June 2018}
-%         \resumeItemListStart
-%             \projectItem{Multilingual Platform Launch}{Engineered English/Arabic localization with RTL support and instant language switching (no app restart), expanding MENA market reach by 200\% while maintaining 100\% UI integrity.}
-%             \projectItem{End-to-End Booking System}{Transformed salon operations by developing calendar-synced booking (25\% fewer no-shows via SMS reminders) and Custom-powered chat (100+ monthly conversations), boosting revenue 18\% and customer retention 40\%.}
-%             \projectItem{Product Impact Focus}{Revolutionized salon discovery by creating dynamic service menus (50+ categories/packages) with a 40\% boosting review system, while streamlining booking to 2 steps (50\% higher conversions) and maintaining 99\% uptime for real-time availability.}
-%         \resumeItemListEnd
-%     \resumeSubHeadingListEnd
-% \vspace{-15pt}
-
-%-----------STRENGTHS-----------
-\section{STRENGTHS}
-    \additionalItem{sitemap}{Technical Proficiency}{Proficient in various architectural patterns and methodologies, ensuring robust software development.}
-    \additionalItem{heart}{Self-Motivated}{Self-Motivated and quick to learn new technologies, thrives in collaborative teams.}
-\vspace{-15pt}
-
-%-----------KEY ACHIEVEMENTS & INTERESTS-----------
-\section{KEY ACHIEVEMENTS \& INTERESTS}
-    \additionalItem{check}{Leadership in Fintech Product Development}{Successfully led iOS development teams, delivering key fintech products that enhanced user experience and streamlined processes.}
-    \additionalItem{bolt}{Open Source Contribution}{Active participation in opensource development at GitHub and contributing to community discussions.}
-\vspace{-15pt}
-
-%-----------CERTIFICATIONS-----------
-% \section{CERTIFICATIONS}
-%     \resumeCertification
-%         {iOS Development Ultimate Bootcamp}{Udemy}
-%         {Certificate No: UC-3308c41b-93cb-485a-9ee3-414299f8ef59}{2016}
-%     \resumeCertification
-%         {Flutter \& Dart -- The Complete Guide}{Udemy}
-%         {Certificate No: UC-71bce9dd-5c4c-4347-a71c-4065f6ad7b8e}{2018}
-% \vspace{-15pt}
-
-%-----------EDUCATION-----------
-\section{EDUCATION}
-  \resumeSubHeadingListStart
-    \resumeSubheading
-      {University of Central Punjab}{2012 – 2016}
-      {Bachelor in Computer Science}{Lahore, Pakistan}
-  \resumeSubHeadingListEnd
-
-%-------------------------------------------
 \end{document}
