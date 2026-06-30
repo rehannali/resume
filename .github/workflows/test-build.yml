@@ -1,0 +1,44 @@
+name: Test Build Resume
+
+on:
+  push:
+    branches-ignore:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test-build:
+    runs-on: ubuntu-latest
+    env:
+      BASE_NAME: ${{ vars.BASE_NAME }}
+      TEXFILE: ${{ vars.TEXFILE }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set dynamic env vars
+        run: |
+          echo "✅ TEXFILE is: ${TEXFILE}"
+          echo "✅ BASE_NAME is: ${BASE_NAME}"
+          echo "TEXFILE=${TEXFILE}" >> $GITHUB_ENV
+          echo "BASE_NAME=${BASE_NAME}" >> $GITHUB_ENV
+          echo "OUTPUT_NAME=${BASE_NAME}" >> $GITHUB_ENV
+
+      - name: Make build script executable
+        run: chmod +x ./build.sh
+
+      - name: Run LaTeX build inside container
+        run: |
+          ./build.sh "${TEXFILE}" --build --release --clean
+
+      - name: Upload resume artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: resume-preview-${{ github.sha }}
+          path: |
+            ${{ env.OUTPUT_NAME }}*.pdf
+            ${{ env.OUTPUT_NAME }}*.png
+          retention-days: 7
