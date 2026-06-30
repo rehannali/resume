@@ -24,7 +24,7 @@ echo "=> PDF created: $PDF"
 
 if command -v magick &> /dev/null; then
   echo "Converting PDF to PNG(s) using ImageMagick..."
-  magick -density 600 "$PDF" -background white -alpha remove -trim "${BASE}-%d.png"
+  magick -density 600 "$PDF" -background white -alpha remove "${BASE}-%d.png"
 else
   echo "Converting PDF to PNG(s) using pdftoppm..."
   pdftoppm -png -r 600 "$PDF" "${BASE}"
