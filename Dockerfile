@@ -1,5 +1,5 @@
 FROM ubuntu:latest
-ARG BASE_NAME=RehanAliResume
+ARG BASE_NAME=RehanAli_Resume
 ENV DEBIAN_FRONTEND=noninteractive \
   BUILD_ENV=development \
   BASE_NAME="$BASE_NAME"

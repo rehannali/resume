@@ -2,9 +2,9 @@
 set -euo pipefail
 
 TEXFILE="$1"
-BASE="${BASE_NAME:-RehanAliResume}"
-PDF="${BASE}.pdf"
-PNG="${BASE}.png"
+BASE="${BASE_NAME:-RehanAli_Resume}"
+FULL="${BASE}_Full"
+BRIEF="${BASE}_Brief"
 
 # Remove all PDF and PNG files if any exist
 shopt -s nullglob  # So globs return empty instead of literal pattern if no match
@@ -17,22 +17,34 @@ else
   echo "ℹ️ No PDF or PNG files to remove."
 fi
 
-pdflatex -jobname="$BASE" "$TEXFILE"
-pdflatex -jobname="$BASE" "$TEXFILE" || true
+build_variant() {
+  local jobname="$1"
+  local texinput="$2"
+  local pdf="${jobname}.pdf"
 
-echo "=> PDF created: $PDF"
+  echo "==== Building variant: $jobname"
+  pdflatex -jobname="$jobname" "$texinput"
+  pdflatex -jobname="$jobname" "$texinput" || true
 
-if command -v magick &> /dev/null; then
-  echo "Converting PDF to PNG(s) using ImageMagick..."
-  magick -density 600 "$PDF" -background white -alpha remove "${BASE}-%d.png"
-else
-  echo "Converting PDF to PNG(s) using pdftoppm..."
-  pdftoppm -png -r 600 "$PDF" "${BASE}"
-fi
+  echo "=> PDF created: $pdf"
 
+  if command -v magick &> /dev/null; then
+    echo "Converting PDF to PNG(s) using ImageMagick..."
+    magick -density 600 "$pdf" -background white -alpha remove "${jobname}-%d.png"
+  else
+    echo "Converting PDF to PNG(s) using pdftoppm..."
+    pdftoppm -png -r 600 "$pdf" "${jobname}"
+  fi
 
-count=$(ls ${BASE}*.png 2>/dev/null | wc -l)
-echo "=> $count PNG file(s) created:"
-ls -1 ${BASE}*.png 2>/dev/null || echo "No PNGs found"
+  count=$(ls "${jobname}"*.png 2>/dev/null | wc -l)
+  echo "=> $count PNG file(s) created:"
+  ls -1 "${jobname}"*.png 2>/dev/null || echo "No PNGs found"
 
-rm -f "${BASE}".{aux,log,out,toc,fls} || true
+  rm -f "${jobname}".{aux,log,out,toc,fls} || true
+}
+
+# Full resume (with PROJECTS section)
+build_variant "$FULL" "$TEXFILE"
+
+# Brief resume (without the PROJECTS section)
+build_variant "$BRIEF" "\\def\\NOPROJECTS{1}\\input{$TEXFILE}"
