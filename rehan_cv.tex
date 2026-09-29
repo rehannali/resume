@@ -216,6 +216,13 @@
 %-------------------------------------------
 %%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Pass \def\NOPROJECTS{1} on the command line (e.g. via -jobname compile trick)
+% to build the variant without the PROJECTS section.
+\newif\ifshowprojects
+\showprojectstrue
+\ifdefined\NOPROJECTS
+  \showprojectsfalse
+\fi
 
 \begin{document}
 
@@ -309,6 +316,7 @@
 \vspace{-15pt}
 
 %-----------PROJECTS-----------------
+\ifshowprojects
 \section{PROJECTS}
     \resumeSubHeadingListStart
         \resumeProjectHeadingLink
@@ -355,6 +363,7 @@
         \resumeItemListEnd
     \resumeSubHeadingListEnd
 \vspace{-15pt}
+\fi
 
 %-----------STRENGTHS-----------
 % \section{STRENGTHS}

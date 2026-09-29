@@ -7,7 +7,7 @@ BUILD=false
 CLEAN=false
 BUILD_ENV=development
 TEXFILE=""
-OUTPUT_NAME="${BASE_NAME:-RehanAliResume}"
+OUTPUT_NAME="${BASE_NAME:-RehanAli_Resume}"
 
 usage() {
   echo "Usage: $0 [OPTIONS] <document.tex>"
