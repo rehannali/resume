@@ -36,7 +36,7 @@ jobs:
 
       - name: ATS check - page count and extracted text
         run: |
-          command -v pdftotext >/dev/null || sudo apt-get install -y poppler-utils
+          command -v pdftotext >/dev/null || { sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils; }
           for f in "${OUTPUT_NAME}"*.pdf; do
             echo "===== $f ====="
             pdfinfo "$f" | grep -E 'Pages|Title'
