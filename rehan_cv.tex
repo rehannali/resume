@@ -67,10 +67,10 @@
 
 \newcommand{\resumeSubheading}[4]{\resumeEntry{#1}{#4}{#3}{#2}}
 
-% Project name, link, tech stack, dates
+% Project name, bare URL (shown as text), tech stack, dates
 \newcommand{\resumeProjectHeadingLink}[4]{%
   \vspace{-2pt}\item
-    \textbf{\href{#2}{#1}} \hfill \textit{\small #4}\\
+    \textbf{#1} (\href{https://#2}{#2}) \hfill \textit{\small #4}\\
     \textit{\small #3}\vspace{-4pt}%
 }
 
@@ -197,68 +197,42 @@
 
 %-----------PROJECTS-----------------
 \ifshowprojects
-\section{PROJECTS}
+\section{Projects}
     \resumeSubHeadingListStart
         \resumeProjectHeadingLink
-        {OneZapp}{https://onezapp.pk}{SwiftUI, CryptoKit, truID, Keychain, SSL Pinning, Biometrics}{Apr 2025 -- Oct 2025}
+        {SGSerializable (Open Source)}{github.com/rehannali/SGSerializable}{Swift, Property Wrappers, Generics, Codable, Swift Package Manager, CircleCI}{Oct 2022 -- Present}
         \resumeItemListStart
-            \projectItem{Mini-App Platform \& Digital Payments}{Engineered sandboxed financial mini-apps (\textbf{top-ups}, \textbf{utility bills}, \textbf{IBFT}) achieving \textbf{100\% transaction integrity}; integrated \textbf{IBFT} at \textbf{99.97\% success rate} with \textbf{15+ utility providers} via \textbf{1Link} and dynamic \textbf{PDF receipts}.}
-            \projectItem{Multi-Channel Wallet Funding}{Built \textbf{QR-based cash-in} system across \textbf{40K+ agents} with instant settlement and direct \textbf{bank API} top-ups via \textbf{1Link}.}
-        \resumeItemListEnd
-        \resumeProjectHeadingLink
-        {Oneload}{https://oneloadpk.com}{Swift, UIKit, Alamofire, Siren, Swift Charts, Fastlane, Biometrics, PDFKit}{Jan 2018 -- Oct 2025}
-        \resumeItemListStart
-            \projectItem{Unified Financial Ecosystem}{Processed \textbf{500K+ monthly transactions}—telco top-ups, utility bills, international vouchers, BookMe travel, and \textbf{40K+ retail} cash-in kiosks; \textbf{universal deep links} with custom token encoding cut user journey steps by \textbf{70\%}.}
-            \projectItem{Credit \& Shopping Ecosystem}{Built iOS \textbf{‘Pay Later’} with auto-repayments and in-app shopping, achieving \textbf{90\% on-time repayments} with risk visualization via \textbf{Swift Charts}.}
-        \resumeItemListEnd
-        \resumeProjectHeadingLink
-        {SGSerializable}{https://github.com/rehannali/SGSerializable}{Property Wrapper, Generics, Codable, SwiftPM, CircleCI}{Oct 2022 -- Present}
-        \resumeItemListStart
-            \projectItem{Open-Source Swift Framework}{Leveraged \textbf{PropertyWrappers} to cut \textbf{JSON boilerplate by 95\%}, reducing model setup from 15 min to \textbf{30 sec}; solved \textbf{type mismatches}, \textbf{optional defaults}, and \textbf{nested parsing} without boilerplate.}
+            \projectItem{Open-Source Swift Framework}{Leveraged \textbf{property wrappers} to cut \textbf{JSON boilerplate by 95\%}, reducing model setup from 15 min to \textbf{30 sec} and handling type mismatches, optional defaults and nested parsing.}
             \projectItem{Community Adoption}{\textbf{10+ production apps} adopted the framework, reducing JSON parsing crashes by \textbf{85\%}.}
         \resumeItemListEnd
         \resumeProjectHeadingLink
-        {Byte}{https://itunes.apple.com/us/app/byte/id889279286?mt=8}{Swift, UIKit, Realm, Cloudinary, Apple Pay, Braintree, Zendesk}{Oct 2018}
+        {OneZapp}{onezapp.pk}{SwiftUI, CryptoKit, truID, Keychain, SSL Pinning, Biometrics}{Apr 2025 -- Oct 2025}
         \resumeItemListStart
-            \projectItem{Food Discovery Platform}{Built visual menu, geolocation deals, and \textbf{geofencing-based rewards} for \textbf{1K+ restaurants}, boosting engagement by \textbf{40\%} and retention by \textbf{35\%}.}
-            \projectItem{Performance Optimization}{Reduced image load time by \textbf{60\%} via caching; achieved crash rate $<$\textbf{0.1\%} using Realm persistence.}
+            \projectItem{Mini-App Platform \& Digital Payments}{Engineered sandboxed financial mini-apps (\textbf{top-ups}, \textbf{utility bills}, \textbf{IBFT}) with \textbf{100\% transaction integrity} and dynamic \textbf{PDF receipts}.}
+            \projectItem{Multi-Channel Wallet Funding}{Built \textbf{QR-based cash-in} with instant settlement and direct \textbf{bank API} top-ups via \textbf{1Link}.}
         \resumeItemListEnd
         \resumeProjectHeadingLink
-        {Wish Wash}{https://itunes.apple.com/bh/app/id1178063274?mt=8}{Objective-C, AFNetworking, Payment, Multi-Lingual}{Feb 2018}
+        {OneLoad}{oneloadpk.com}{Swift, UIKit, Alamofire, Siren, Swift Charts, Fastlane, Biometrics, PDFKit}{Jan 2018 -- Oct 2025} % TODO: confirm start date (E-Processing tenure starts Jan 2023)
         \resumeItemListStart
-            \projectItem{On-Demand Laundry App}{Developed \textbf{3-step onboarding} cutting signup time by \textbf{50\%}, scaling to \textbf{500+ weekly orders}; enabled wash/iron/dry-clean with real-time tracking, boosting order value by \textbf{30\%}.}
-            \projectItem{Trust \& Engagement}{Verified cleaner profiles improved trust scores by \textbf{40\%}; update adoption reached \textbf{85\%}.}
+            \projectItem{Unified Financial Ecosystem}{Delivered telco top-ups, utility bills, international vouchers, BookMe travel and retail cash-in kiosks in one app, with \textbf{universal deep links} and custom token encoding.}
+            \projectItem{Credit \& Shopping Ecosystem}{Built the iOS ``Pay Later'' flow with auto-repayments and in-app shopping, with risk visualization via \textbf{Swift Charts}.}
         \resumeItemListEnd
-        \resumeProjectHeadingLink
-        {ShopTrav}{https://itunes.apple.com/us/app/shoptrav/id1228340656?ls=1&mt=8}{Swift, UIKit, Facebook Kit, Alamofire, CoreLocation}{Aug 2018}
-        \resumeItemListStart
-            \projectItem{Cross-Border Delivery Network}{Matched shoppers with travelers for \textbf{1,000+ international deliveries}, cutting delivery time by \textbf{30\%} and improving logistics efficiency by \textbf{40\%}.}
-            \projectItem{Engagement \& Efficiency}{Boosted retention by \textbf{25\%} via feedback-driven updates; cut battery usage by \textbf{20\%} through CoreLocation optimizations with \textbf{35\%} tracking accuracy gain.}
-        \resumeItemListEnd
-        \resumeProjectHeadingLink
-        {Pretty Pointy}{https://itunes.apple.com/us/app/id1367552041?ls=1&mt=8}{Google Calendar, Google Maps, SnapKit, Branch, KingFisher, Multi-Lingual}{June 2018}
-        \resumeItemListStart
-            \projectItem{Multilingual Booking Platform}{English/Arabic \textbf{RTL} localization with instant switching expanded MENA reach by \textbf{200\%}; calendar-synced booking with in-app chat cut no-shows by \textbf{25\%} and improved retention by \textbf{40\%}.}
-            \projectItem{Product Impact}{Boosted review rates \textbf{40\%}, reduced booking steps \textbf{50\%}, and maintained \textbf{99\% uptime} on availability services.}
-        \resumeItemListEnd
+        \item \small\textbf{Earlier App Store apps (2018):} Byte, Wish Wash, ShopTrav and Pretty Pointy -- Swift, Objective-C, Realm, Apple Pay, Braintree, Core Location, Google Maps, geofencing, Arabic RTL localization. % TODO: per-app metrics were removed for length; see git history (dfbcf4c) if you want to restore any
     \resumeSubHeadingListEnd
 \vspace{-15pt}
 \fi
 
-%-----------STRENGTHS-----------
-% \section{STRENGTHS}
-%     \additionalItem{sitemap}{Technical Proficiency}{Proficient in various architectural patterns and methodologies, ensuring robust software development.}
-%     \additionalItem{heart}{Self-Motivated}{Self-Motivated and quick to learn new technologies, thrives in collaborative teams.}
-% \vspace{-15pt}
-
-%-----------KEY ACHIEVEMENTS & INTERESTS-----------
-\section{KEY ACHIEVEMENTS \& INTERESTS}
-    \additionalItem{check}{Leadership in Fintech Product Development}{Successfully led iOS development teams, delivering key fintech products that enhanced user experience and streamlined processes.}
-    \additionalItem{bolt}{Open Source Contribution}{Active participation in opensource development at GitHub and contributing to community discussions.}
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeEntry
+      {University of Central Punjab}{Lahore, Pakistan}
+      {Bachelor in Computer Science}{2012 -- 2016}
+  \resumeSubHeadingListEnd
 \vspace{-15pt}
 
 %-----------CERTIFICATIONS-----------
-\section{CERTIFICATIONS}
+\section{Certifications}
     \resumeCertification
         {iOS Development Ultimate Bootcamp}{Udemy}
         {Certificate No: UC-3308c41b-93cb-485a-9ee3-414299f8ef59}{2016}
@@ -267,33 +241,9 @@
         {Certificate No: UC-71bce9dd-5c4c-4347-a71c-4065f6ad7b8e}{2018}
     \resumeCertification
         {Maximize Productivity With AI Tools}{Coursera (Google)}
-        {\href{https://www.coursera.org/account/accomplishments/verify/SNCJIM8QAZ2A}{\underline{Certificate ID: SNCJIM8QAZ2A}}}{2026}
+        {\href{https://www.coursera.org/account/accomplishments/verify/SNCJIM8QAZ2A}{Certificate ID: SNCJIM8QAZ2A}}{2026}
     \resumeCertification
         {Google AI Essentials}{Coursera (Google)}
-        {\href{https://www.coursera.org/account/accomplishments/specialization/certificate/4FMGKEJQ4LVO}{\underline{Certificate ID: 4FMGKEJQ4LVO}}}{2026}
-\vspace{-15pt}
-
-%-----------EDUCATION-----------
-\section{EDUCATION}
-  \resumeSubHeadingListStart
-    \resumeSubheading
-      {University of Central Punjab}{2012 – 2016}
-      {Bachelor in Computer Science}{Lahore, Pakistan}
-  \resumeSubHeadingListEnd
-
-%-------------------------------------------
-
-% -----------ADDITIONAL INFORMATION(Helper)-----------
-
-% --------Multiple Positions Heading------------
-  %  \resumeSubSubheading
-  %   {Software Engineer I}{Oct 2014 -- Sep 2016}
-  %   \resumeItemListStart
-  %      \resumeItem{Apache Beam}
-  %        {Apache Beam is a unified model for defining both batch and streaming data-parallel processing pipelines}
-  %   \resumeItemListEnd
-
-%-------------------------------------------
-
+        {\href{https://www.coursera.org/account/accomplishments/specialization/certificate/4FMGKEJQ4LVO}{Certificate ID: 4FMGKEJQ4LVO}}{2026}
 
 \end{document}
