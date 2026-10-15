@@ -8,66 +8,20 @@
 
 \documentclass[a4paper,10pt]{article}
 
-\usepackage{latexsym}
+% ATS: T1 + Latin Modern with Unicode mapping so text extracts cleanly
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\input{glyphtounicode}
+\pdfgentounicode=1
+
 \usepackage[empty]{fullpage}
 \usepackage{titlesec}
-\usepackage{marvosym}
-\usepackage[usenames,dvipsnames]{color}
-\usepackage{verbatim}
+\usepackage{xcolor}
 \usepackage{enumitem}
-\usepackage[hidelinks]{hyperref}
-\usepackage[english]{babel}
-\usepackage{tabularx}
-\usepackage[most]{tcolorbox}
-\usepackage{fontawesome5}
-\usepackage{pifont}
-\usepackage{xstring}
-\usepackage{multicol}
-\usepackage{graphicx}
-\setlength{\multicolsep}{-3.0pt}
-\setlength{\columnsep}{-1pt}
-\input{glyphtounicode}
+\usepackage[hidelinks,unicode]{hyperref}
+\hypersetup{pdftitle={Rehan Ali -- Lead Software Engineer iOS}, pdfauthor={Rehan Ali}}
 
-\RequirePackage{tikz}
-\RequirePackage{xcolor}
-\usepackage{tikz}
-\usetikzlibrary{svg.path}
-
-
-\definecolor{cvblue}{HTML}{0E5484}
 \definecolor{black}{HTML}{130810}
-\definecolor{darkcolor}{HTML}{0F4539}
-\definecolor{cvgreen}{HTML}{3BD80D}
-\definecolor{taggreen}{HTML}{00E278}
-\definecolor{SlateGrey}{HTML}{2E2E2E}
-\definecolor{LightGrey}{HTML}{666666}
-\colorlet{name}{black}
-\colorlet{tagline}{darkcolor}
-\colorlet{heading}{darkcolor}
-\colorlet{headingrule}{cvblue}
-\colorlet{accent}{darkcolor}
-\colorlet{emphasis}{SlateGrey}
-\colorlet{body}{LightGrey}
-
-
-
-%----------FONT OPTIONS----------
-% sans-serif
-% \usepackage[sfdefault]{FiraSans}
-% \usepackage[sfdefault]{roboto}
-% \usepackage[sfdefault]{noto-sans}
-% \usepackage[default]{sourcesanspro}
-
-% serif
-% \usepackage{CormorantGaramond}
-% \usepackage{charter}
-
-
-% \pagestyle{fancy}
-% \fancyhf{}  % clear all header and footer fields
-% \fancyfoot{}
-% \renewcommand{\headrulewidth}{0pt}
-% \renewcommand{\footrulewidth}{0pt}
 
 % Adjust margins
 \addtolength{\oddsidemargin}{-0.6in}
@@ -80,18 +34,14 @@
 
 \raggedbottom
 \raggedright
-\setlength{\tabcolsep}{0in}
 
 % Sections formatting
 \titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large\bfseries
+  \vspace{-4pt}\raggedright\large\bfseries\MakeUppercase
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
-% Ensure that generate pdf is machine readable/ATS parsable
-\pdfgentounicode=1
-
 %-------------------------
-% Custom commands
+% Custom commands (single-column, no tables, no icon fonts)
 \newcommand{\resumeItem}[1]{
   \item\small{
     {#1}\vspace{-2pt}
@@ -108,97 +58,29 @@
     }\vspace{-2pt}
 }
 
-\newcommand{\classesList}[4]{
-    \item\small{
-        {#1 #2 #3 #4 \vspace{-2pt}}
-  }
+% Company/School, Location ... Dates, then Title/Degree on the next line
+\newcommand{\resumeEntry}[4]{%
+  \vspace{-2pt}\item
+    \textbf{\large #1}, {\small #2} \hfill \textbf{\small #4}\\
+    \textit{\large #3}\vspace{-4pt}%
+}
+
+\newcommand{\resumeSubheading}[4]{\resumeEntry{#1}{#4}{#3}{#2}}
+
+% Project name, link, tech stack, dates
+\newcommand{\resumeProjectHeadingLink}[4]{%
+  \vspace{-2pt}\item
+    \textbf{\href{#2}{#1}} \hfill \textit{\small #4}\\
+    \textit{\small #3}\vspace{-4pt}%
 }
 
 \newcommand{\resumeCertification}[4]{%
-  \noindent
-  \begin{tabularx}{\linewidth}{@{}m{2em}@{}X@{}}%
-    \centering\faIcon{certificate} &
-    \begin{minipage}[t]{\linewidth}
-      \textbf{#1} \hfill \textit{#4} \\
-      \small#2 -- \textit{#3}
-    \end{minipage} \\
-  \end{tabularx}%
-  \vspace{2pt}
+  \noindent\textbf{#1}, #2, #4 \hfill {\small #3}\par\vspace{2pt}%
 }
 
-
-\newcommand{\resumeSubheading}[4]{
-  \vspace{-2pt}\item
-    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{\large#1} & \textbf{\small #2} \\
-      \textit{\large#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-7pt}
+\newcommand{\additionalItem}[3]{%
+  \noindent\textbf{#2}\\ {\small #3}\par\vspace{1pt}%
 }
-
-\newcommand{\resumeSubheadingExperience}[5]{
-  \vspace{-2pt}\item
-    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{\large#1} & \textbf{\small #2} \\
-      \textit{\underline{#3}} & \textit{\small #4} \\
-      {\small#5} & \\
-    \end{tabular*}\vspace{-7pt}
-}
-
-\newcommand{\resumeSubSubheading}[2]{
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \textit{\small#1} & \textit{\small #2} \\
-    \end{tabular*}\vspace{-7pt}
-}
-
-\newcommand{\resumeProjectHeadingSimple}[3]{%
-  \item
-  \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-    {\small\textbf{#1}} $|$ {\small\emph{#2}} & {\small\textit{#3}} \\
-  \end{tabular*}\vspace{-5pt}
-}
-
-\newcommand{\resumeProjectHeadingLink}[4]{%
-  \item
-  \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-    {\small\textbf{\href{#2}{\underline{#1}~\raisebox{-0.1\height}{\faLink}}}} $|$ {\small\emph{#3}} & {\small\textit{#4}} \\
-  \end{tabular*}\vspace{-5pt}
-}
-
-
-\newcommand{\resumeAdditionalFA}[3]{%
-  \noindent
-  \begin{tabularx}{\linewidth}{@{}m{2em}@{}X@{}}%
-    \centering\faIcon{#1} &
-    \begin{minipage}[t]{\linewidth}
-      \textbf{#2}\vspace{1pt}\\
-      \small #3
-    \end{minipage} \\
-  \end{tabularx}%
-  \vspace{1pt}
-}
-
-\newcommand{\resumeAdditionalGeneric}[4]{%
-  \noindent
-  \begin{tabularx}{\linewidth}{@{}m{2em}@{}X@{}}%
-    \centering\customIcon{#1}{#2} &
-    \begin{minipage}[t]{\linewidth}
-      \textbf{#3}\vspace{1pt}\\
-      \small #4
-    \end{minipage} \\
-  \end{tabularx}%
-  \vspace{1pt}
-}
-
-\newcommand{\customIcon}[2]{%
-  \ifstrequal{#1}{fa}{\faIcon{#2}}{}%
-  \ifstrequal{#1}{pi}{\ding{#2}}{}%
-  % Add more if needed:
-  % \ifstrequal{#1}{ai}{\aiIcon{#2}}{} % for academicons, for example
-}
-
-\newcommand{\additionalItem}[3]{\resumeAdditionalFA{#1}{#2}{#3}}
-\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
 
 \renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
 \renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
@@ -209,9 +91,6 @@
 \newcommand{\resumeSkillsHeadingListEnd}{\end{itemize}}
 \newcommand{\resumeItemListStart}{\begin{itemize}}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
-
-
-\newcommand\sbullet[1][.5]{\mathbin{\vcenter{\hbox{\scalebox{#1}{$\bullet$}}}}}
 
 %-------------------------------------------
 %%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -228,12 +107,9 @@
 
 %----------HEADING-----------------
 \begin{center}
-    {\Huge \scshape Rehan Ali} \\ \vspace{1pt}
-    \small \href{tel:+923033132222}{ \raisebox{-0.1\height}\faPhone\ \underline{+92-303-3132222}} ~
-    \href{mailto:services@rehan.one}{\raisebox{-0.2\height}\faEnvelope\  \underline{services@rehan.one}} ~
-    \href{https://rehan.one/linkedin}{\raisebox{-0.2\height}\faLinkedin\ \underline{rehan.one/linkedin}} ~
-    \href{https://rehan.one/gh}{\raisebox{-0.2\height}\faGithub\ \underline{rehan.one/gh}} ~
-    % \href{https://leetcode.com/rehannali/}{\raisebox{-0.2\height}{\includegraphics[height=0.3cm, width=0.3cm]{leetcode.png}}\ \underline{LeetCode}} ~
+    {\Huge \scshape Rehan Ali} \\ \vspace{2pt}
+    \small Pakistan (Remote) \textbar\ Phone: \href{tel:+923033132222}{+92-303-3132222} \textbar\ Email: \href{mailto:services@rehan.one}{services@rehan.one} \\
+    \small LinkedIn: \href{https://rehan.one/linkedin}{rehan.one/linkedin} \textbar\ GitHub: \href{https://rehan.one/gh}{rehan.one/gh}
 \end{center}
 \vspace{-15pt}
 
@@ -251,10 +127,9 @@
 \section{EXPERIENCE}
   \resumeSubHeadingListStart
 
-    \resumeSubheadingExperience
+    \resumeEntry
         {STEP218}{Mountain View, CA}
         {Lead Software Engineer iOS}{Oct 2025 -- Present}
-        {A technology and data-focused firm delivering scalable, robust, and data-driven solutions for enterprise clients.}
         \resumeItemListStart
             \resumeItem{\textbf{Leading} iOS development for a \textbf{telecom client}, architecting consumer-facing features for \textbf{prepaid/postpaid packages} covering \textbf{calls}, \textbf{internet}, and \textbf{SMS} bundles.}
             \resumeItem{\textbf{Engineered} end-to-end \textbf{payment flows} for telecom package purchases, ensuring \textbf{secure transactions} and a frictionless checkout experience.}
@@ -264,10 +139,9 @@
             \resumeItem{\textbf{Built and integrated} a shared \textbf{analytics SDK} across platforms using \textbf{Kotlin Multiplatform (KMP)}, reducing duplicate implementation effort between iOS and Android.}
         \resumeItemListEnd
 
-    \resumeSubheadingExperience
+    \resumeEntry
         {E-Processing Systems Pvt. Ltd}{Lahore, Pakistan}
         {Sr. Principal Software Engineer iOS}{Jan 2023 -- Oct 2025}
-        {A company focused on creating fintech software solutions.}
         \resumeItemListStart
             \resumeItem{\textbf{Spearheaded} development of flagship financial products \textbf{OneLoad} and \textbf{OneZapp}, delivering \textbf{secure iOS solutions} for \textbf{digital payments} and \textbf{banking services}.}
             \resumeItem{\textbf{Collaborated} with cross-functional teams to design and implement \textbf{user-centric features} following \textbf{Agile methodologies}.}
@@ -276,10 +150,9 @@
             \resumeItem{\textbf{Established} testing standards incorporating \textbf{TDD} and \textbf{BDD practices}.}
         \resumeItemListEnd
 
-    \resumeSubheadingExperience
+    \resumeEntry
         {Systems Limited}{Lahore, Pakistan}
         {Sr. Software Engineer iOS}{Dec 2018 -- Dec 2022}
-        {A technology services and consulting company.}
         \resumeItemListStart
             \resumeItem{\textbf{Directed} iOS development team in delivering \textbf{enterprise-grade mobile solutions}.}
             \resumeItem{\textbf{Architected and implemented} \textbf{payment processing framework} for third-party integrations.}
@@ -288,10 +161,9 @@
             \resumeItem{\textbf{Researched and integrated} emerging technologies to maintain a \textbf{competitive edge}.}
         \resumeItemListEnd
 
-    \resumeSubheadingExperience
+    \resumeEntry
         {Developers Clan}{Lahore, Pakistan}
         {Sr. Software Engineer}{Jan 2018 -- Dec 2018}
-        {A technology services and consulting company.}
         \resumeItemListStart
             \resumeItem{\textbf{Promoted} to senior role within first year, \textbf{leading a team} of 5 iOS developers.}
             \resumeItem{\textbf{Integrated} multiple third-party SDKs including \textbf{Google Maps}, \textbf{Stripe}, and \textbf{Firebase}.}
@@ -300,10 +172,9 @@
             \resumeItem{\textbf{Developed offline-first architecture} using \textbf{Core Data} and \textbf{Realm}.}
         \resumeItemListEnd
 
-    \resumeSubheadingExperience
+    \resumeEntry
         {Originator Business and I.T Solutions}{Lahore, Pakistan}
         {Software Engineer}{Feb 2016 -- Dec 2017}
-        {An IT solutions provider offering various business-related technology services.}
         \resumeItemListStart
             \resumeItem{\textbf{Transitioned} from intern to full developer, contributing to multiple iOS projects.}
             \resumeItem{\textbf{Engineered} media playback features using \textbf{AVKit} for local and streaming content.}
