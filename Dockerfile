@@ -16,7 +16,7 @@ RUN if [ "$BUILD_ENV" = "production" ]; then \
     else \
         apt-get install -y --no-install-recommends \
         texlive-latex-base texlive-latex-recommended texlive-latex-extra \
-        texlive-fonts-recommended texlive-fonts-extra; \
+        texlive-fonts-recommended texlive-fonts-extra lmodern; \
     fi && \
     rm -rf /var/lib/apt/lists/*
 
