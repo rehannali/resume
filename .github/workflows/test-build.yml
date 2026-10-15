@@ -34,6 +34,15 @@ jobs:
         run: |
           ./build.sh "${TEXFILE}" --build --release --clean
 
+      - name: ATS check - page count and extracted text
+        run: |
+          command -v pdftotext >/dev/null || sudo apt-get install -y poppler-utils
+          for f in "${OUTPUT_NAME}"*.pdf; do
+            echo "===== $f ====="
+            pdfinfo "$f" | grep -E 'Pages|Title'
+            pdftotext -layout "$f" -
+          done
+
       - name: Upload resume artifacts
         uses: actions/upload-artifact@v4
         with:
