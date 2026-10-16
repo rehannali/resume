@@ -34,6 +34,11 @@ jobs:
         run: |
           ./build.sh "${TEXFILE}" --build --release --clean
 
+      - name: ATS check - score, parse test and extracted text
+        run: |
+          command -v pdftotext >/dev/null || { sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils; }
+          python3 scripts/ats_check.py "${OUTPUT_NAME}"*.pdf
+
       - name: Upload resume artifacts
         uses: actions/upload-artifact@v4
         with:

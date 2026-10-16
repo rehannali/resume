@@ -8,66 +8,20 @@
 
 \documentclass[a4paper,10pt]{article}
 
-\usepackage{latexsym}
+% ATS: T1 + Latin Modern with Unicode mapping so text extracts cleanly
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\input{glyphtounicode}
+\pdfgentounicode=1
+
 \usepackage[empty]{fullpage}
 \usepackage{titlesec}
-\usepackage{marvosym}
-\usepackage[usenames,dvipsnames]{color}
-\usepackage{verbatim}
+\usepackage{xcolor}
 \usepackage{enumitem}
-\usepackage[hidelinks]{hyperref}
-\usepackage[english]{babel}
-\usepackage{tabularx}
-\usepackage[most]{tcolorbox}
-\usepackage{fontawesome5}
-\usepackage{pifont}
-\usepackage{xstring}
-\usepackage{multicol}
-\usepackage{graphicx}
-\setlength{\multicolsep}{-3.0pt}
-\setlength{\columnsep}{-1pt}
-\input{glyphtounicode}
+\usepackage[hidelinks,unicode]{hyperref}
+\hypersetup{pdftitle={Rehan Ali -- Lead Software Engineer iOS}, pdfauthor={Rehan Ali}}
 
-\RequirePackage{tikz}
-\RequirePackage{xcolor}
-\usepackage{tikz}
-\usetikzlibrary{svg.path}
-
-
-\definecolor{cvblue}{HTML}{0E5484}
 \definecolor{black}{HTML}{130810}
-\definecolor{darkcolor}{HTML}{0F4539}
-\definecolor{cvgreen}{HTML}{3BD80D}
-\definecolor{taggreen}{HTML}{00E278}
-\definecolor{SlateGrey}{HTML}{2E2E2E}
-\definecolor{LightGrey}{HTML}{666666}
-\colorlet{name}{black}
-\colorlet{tagline}{darkcolor}
-\colorlet{heading}{darkcolor}
-\colorlet{headingrule}{cvblue}
-\colorlet{accent}{darkcolor}
-\colorlet{emphasis}{SlateGrey}
-\colorlet{body}{LightGrey}
-
-
-
-%----------FONT OPTIONS----------
-% sans-serif
-% \usepackage[sfdefault]{FiraSans}
-% \usepackage[sfdefault]{roboto}
-% \usepackage[sfdefault]{noto-sans}
-% \usepackage[default]{sourcesanspro}
-
-% serif
-% \usepackage{CormorantGaramond}
-% \usepackage{charter}
-
-
-% \pagestyle{fancy}
-% \fancyhf{}  % clear all header and footer fields
-% \fancyfoot{}
-% \renewcommand{\headrulewidth}{0pt}
-% \renewcommand{\footrulewidth}{0pt}
 
 % Adjust margins
 \addtolength{\oddsidemargin}{-0.6in}
@@ -80,18 +34,14 @@
 
 \raggedbottom
 \raggedright
-\setlength{\tabcolsep}{0in}
 
 % Sections formatting
 \titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large\bfseries
+  \vspace{-4pt}\raggedright\large\bfseries
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
-% Ensure that generate pdf is machine readable/ATS parsable
-\pdfgentounicode=1
-
 %-------------------------
-% Custom commands
+% Custom commands (single-column, no tables, no icon fonts)
 \newcommand{\resumeItem}[1]{
   \item\small{
     {#1}\vspace{-2pt}
@@ -104,101 +54,33 @@
 
 \newcommand{\resumeTechSkill}[2]{
     \item\small{
-        \textbf{\small{#1:}} \small{#2} \\[-3pt]
+        \textbf{\small{#1:}} \small{#2} \\[-1pt]
     }\vspace{-2pt}
 }
 
-\newcommand{\classesList}[4]{
-    \item\small{
-        {#1 #2 #3 #4 \vspace{-2pt}}
-  }
+% Company/School, Location ... Dates, then Title/Degree on the next line
+\newcommand{\resumeEntry}[4]{%
+  \vspace{2pt}\item
+    \textbf{\large #1}, {\small #2} \hfill \textbf{\small #4}\\
+    \textit{#3}\vspace{-4pt}%
+}
+
+\newcommand{\resumeSubheading}[4]{\resumeEntry{#1}{#4}{#3}{#2}}
+
+% Project name, bare URL (shown as text), tech stack, dates
+\newcommand{\resumeProjectHeadingLink}[4]{%
+  \vspace{3pt}\item
+    \textbf{#1} (\href{https://#2}{#2}) \hfill \textit{\small #4}\\
+    \textit{\small #3}\vspace{-4pt}%
 }
 
 \newcommand{\resumeCertification}[4]{%
-  \noindent
-  \begin{tabularx}{\linewidth}{@{}m{2em}@{}X@{}}%
-    \centering\faIcon{certificate} &
-    \begin{minipage}[t]{\linewidth}
-      \textbf{#1} \hfill \textit{#4} \\
-      \small#2 -- \textit{#3}
-    \end{minipage} \\
-  \end{tabularx}%
-  \vspace{2pt}
+  \noindent\textbf{#1}, #2, #4 \hfill {\small #3}\par\vspace{0pt}%
 }
 
-
-\newcommand{\resumeSubheading}[4]{
-  \vspace{-2pt}\item
-    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{\large#1} & \textbf{\small #2} \\
-      \textit{\large#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-7pt}
+\newcommand{\additionalItem}[3]{%
+  \noindent\textbf{#2}\\ {\small #3}\par\vspace{1pt}%
 }
-
-\newcommand{\resumeSubheadingExperience}[5]{
-  \vspace{-2pt}\item
-    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{\large#1} & \textbf{\small #2} \\
-      \textit{\underline{#3}} & \textit{\small #4} \\
-      {\small#5} & \\
-    \end{tabular*}\vspace{-7pt}
-}
-
-\newcommand{\resumeSubSubheading}[2]{
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \textit{\small#1} & \textit{\small #2} \\
-    \end{tabular*}\vspace{-7pt}
-}
-
-\newcommand{\resumeProjectHeadingSimple}[3]{%
-  \item
-  \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-    {\small\textbf{#1}} $|$ {\small\emph{#2}} & {\small\textit{#3}} \\
-  \end{tabular*}\vspace{-5pt}
-}
-
-\newcommand{\resumeProjectHeadingLink}[4]{%
-  \item
-  \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-    {\small\textbf{\href{#2}{\underline{#1}~\raisebox{-0.1\height}{\faLink}}}} $|$ {\small\emph{#3}} & {\small\textit{#4}} \\
-  \end{tabular*}\vspace{-5pt}
-}
-
-
-\newcommand{\resumeAdditionalFA}[3]{%
-  \noindent
-  \begin{tabularx}{\linewidth}{@{}m{2em}@{}X@{}}%
-    \centering\faIcon{#1} &
-    \begin{minipage}[t]{\linewidth}
-      \textbf{#2}\vspace{1pt}\\
-      \small #3
-    \end{minipage} \\
-  \end{tabularx}%
-  \vspace{1pt}
-}
-
-\newcommand{\resumeAdditionalGeneric}[4]{%
-  \noindent
-  \begin{tabularx}{\linewidth}{@{}m{2em}@{}X@{}}%
-    \centering\customIcon{#1}{#2} &
-    \begin{minipage}[t]{\linewidth}
-      \textbf{#3}\vspace{1pt}\\
-      \small #4
-    \end{minipage} \\
-  \end{tabularx}%
-  \vspace{1pt}
-}
-
-\newcommand{\customIcon}[2]{%
-  \ifstrequal{#1}{fa}{\faIcon{#2}}{}%
-  \ifstrequal{#1}{pi}{\ding{#2}}{}%
-  % Add more if needed:
-  % \ifstrequal{#1}{ai}{\aiIcon{#2}}{} % for academicons, for example
-}
-
-\newcommand{\additionalItem}[3]{\resumeAdditionalFA{#1}{#2}{#3}}
-\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
 
 \renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
 \renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
@@ -209,9 +91,6 @@
 \newcommand{\resumeSkillsHeadingListEnd}{\end{itemize}}
 \newcommand{\resumeItemListStart}{\begin{itemize}}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
-
-
-\newcommand\sbullet[1][.5]{\mathbin{\vcenter{\hbox{\scalebox{#1}{$\bullet$}}}}}
 
 %-------------------------------------------
 %%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -228,22 +107,28 @@
 
 %----------HEADING-----------------
 \begin{center}
-    {\Huge \scshape Rehan Ali} \\ \vspace{1pt}
-    \small \href{tel:+923033132222}{ \raisebox{-0.1\height}\faPhone\ \underline{+92-303-3132222}} ~
-    \href{mailto:services@rehan.one}{\raisebox{-0.2\height}\faEnvelope\  \underline{services@rehan.one}} ~
-    \href{https://rehan.one/linkedin}{\raisebox{-0.2\height}\faLinkedin\ \underline{rehan.one/linkedin}} ~
-    \href{https://rehan.one/gh}{\raisebox{-0.2\height}\faGithub\ \underline{rehan.one/gh}} ~
-    % \href{https://leetcode.com/rehannali/}{\raisebox{-0.2\height}{\includegraphics[height=0.3cm, width=0.3cm]{leetcode.png}}\ \underline{LeetCode}} ~
+    {\Huge \scshape Rehan Ali} \\ \vspace{2pt}
+    \small Pakistan (Remote) \textbar\ Phone: \href{tel:+923033132222}{+92-303-3132222} \textbar\ Email: \href{mailto:services@rehan.one}{services@rehan.one} \\
+    \small LinkedIn: \href{https://linkedin.com/in/rehannali}{linkedin.com/in/rehannali} \textbar\ GitHub: \href{https://github.com/rehannali}{github.com/rehannali}
 \end{center}
 \vspace{-15pt}
 
- %-----------TECHNICAL SKILLS-----------
-\section{TECHNICAL SKILLS}
+%-----------SUMMARY-----------
+\section{SUMMARY}
+\small Lead Software Engineer iOS with 10+ years of experience building secure fintech and telecom apps for the App Store. Experienced in Swift, SwiftUI, UIKit, Combine and MVVM/Clean Architecture, plus payments, CI/CD (Fastlane) and Kotlin Multiplatform (KMP). Led iOS teams; shipped fintech products (300K daily transactions) and enterprise telecom apps.
+\vspace{-5pt}
+
+%-----------SKILLS-----------
+\section{SKILLS}
 \resumeSkillsHeadingListStart
-    \resumeTechSkill{Languages}{Swift, Objective-C, Kotlin (KMP), Python, Dart}
-    \resumeTechSkill{Technologies \& Frameworks}{iOS SDK, SwiftUI, UIKit, Combine, RxSwift, CoreData, AVKit, CryptoKit, PDFKit, Alamofire, Firebase, Google Maps, Crashlytics, Dynatrace, netfox, Stripe, RevenueCat, goSellSDK, PayFortSDK, Branch, Amplitude, Lottie, SendBird, OCR/Document Reader, Lokalise, SQLite, Realm, Shopify, REST API, SOAP API}
-    \resumeTechSkill{Architecture \& Patterns}{MVC, MVVM, MVVM-C, Clean Architecture, Delegate, Singleton, Observer, Factory, Notification}
-    \resumeTechSkill{Tools \& DevOps}{Xcode, Tuist, CocoaPods, Git, GitHub, Fastlane, Jenkins, CircleCI, JIRA, Swift Testing, XCTest, Unit Testing, Nimble, Quick, PyCharm, Intellij, VS Code}
+    \resumeTechSkill{Languages}{Swift, Objective-C, Kotlin Multiplatform (KMP), Dart, Python}
+    \resumeTechSkill{Frameworks \& SDKs}{iOS SDK, SwiftUI, UIKit, Combine, RxSwift, Core Data, Core Location, AVKit, PDFKit, CryptoKit, Swift Charts, Lottie, Google Maps, Push Notifications, Accessibility, SendBird, Lokalise, OCR/Document Reader}
+    \resumeTechSkill{Architecture \& Concurrency}{MVVM, MVVM-C, MVC, Clean Architecture, Dependency Injection, Design Patterns (Delegate, Observer, Singleton, Factory), async/await (Swift Concurrency), GCD, Operation Queues, Deep Linking, Offline-First}
+    \resumeTechSkill{Networking, Data \& Backend}{REST API, SOAP API, Alamofire, Firebase, SQLite, Realm, UserDefaults}
+    \resumeTechSkill{Payments \& Security}{Stripe, Apple Pay, RevenueCat, PayFortSDK, goSellSDK, Keychain, Biometrics, SSL Pinning}
+    \resumeTechSkill{Tools \& CI/CD}{Xcode, Git, GitHub Actions, Fastlane, Jenkins, CircleCI, CocoaPods, Swift Package Manager, Tuist, TestFlight}
+    \resumeTechSkill{Testing \& Process}{XCTest, XCUITest, Swift Testing, Unit/UI Testing, TDD, BDD, Nimble, Quick, Agile, Jira}
+    \resumeTechSkill{Analytics \& Monitoring}{Adjust, Amplitude, Firebase, Crashlytics, Dynatrace, Branch, netfox}
 \resumeSkillsHeadingListEnd
 
 
@@ -251,131 +136,90 @@
 \section{EXPERIENCE}
   \resumeSubHeadingListStart
 
-    \resumeSubheadingExperience
-        {STEP218}{Mountain View, CA}
+    \resumeEntry
+        {STEP218}{Mountain View, CA, USA (Remote)}
         {Lead Software Engineer iOS}{Oct 2025 -- Present}
-        {A technology and data-focused firm delivering scalable, robust, and data-driven solutions for enterprise clients.}
         \resumeItemListStart
-            \resumeItem{\textbf{Leading} iOS development for a \textbf{telecom client}, architecting consumer-facing features for \textbf{prepaid/postpaid packages} covering \textbf{calls}, \textbf{internet}, and \textbf{SMS} bundles.}
-            \resumeItem{\textbf{Engineered} end-to-end \textbf{payment flows} for telecom package purchases, ensuring \textbf{secure transactions} and a frictionless checkout experience.}
-            \resumeItem{\textbf{Implemented} \textbf{eSIM provisioning} and \textbf{physical SIM ordering} workflows, enabling users to select, purchase, and activate SIM types on-demand.}
-            \resumeItem{\textbf{Collaborating} with cross-functional teams across time zones to deliver \textbf{client-specific telecom solutions} aligned with business goals and timelines.}
-            \resumeItem{\textbf{Driving} best practices in \textbf{code quality}, \textbf{architecture}, and \textbf{CI/CD pipelines} to maintain high-velocity delivery for client engagements.}
-            \resumeItem{\textbf{Built and integrated} a shared \textbf{analytics SDK} across platforms using \textbf{Kotlin Multiplatform (KMP)}, reducing duplicate implementation effort between iOS and Android.}
+            \resumeItem{\textbf{Lead} iOS development for a \textbf{telecom client}, architecting consumer-facing \textbf{prepaid/postpaid package} features (calls, internet, SMS bundles) with end-to-end \textbf{payment flows}, secure transactions and a frictionless checkout.} % Client metrics are held by the product team and are under NDA; leave unquantified.
+            \resumeItem{\textbf{Implemented} \textbf{eSIM provisioning} and \textbf{physical SIM ordering} workflows, enabling users to select, purchase and activate SIM types on demand.}
+            \resumeItem{\textbf{Built} a shared \textbf{analytics SDK} with \textbf{Kotlin Multiplatform (KMP)} powering app-wide analytics through \textbf{Adjust}, \textbf{Amplitude} and \textbf{Firebase}, removing duplicate iOS and Android implementation.}
+            \resumeItem{\textbf{Drive} code quality, architecture and \textbf{CI/CD} best practices, collaborating with cross-functional teams across time zones to deliver client-specific solutions aligned with business goals and timelines.}
         \resumeItemListEnd
 
-    \resumeSubheadingExperience
+    \resumeEntry
         {E-Processing Systems Pvt. Ltd}{Lahore, Pakistan}
-        {Sr. Principal Software Engineer iOS}{Jan 2023 -- Oct 2025}
-        {A company focused on creating fintech software solutions.}
+        {Senior Principal Software Engineer iOS}{Jan 2023 -- Oct 2025}
         \resumeItemListStart
-            \resumeItem{\textbf{Spearheaded} development of flagship financial products \textbf{OneLoad} and \textbf{OneZapp}, delivering \textbf{secure iOS solutions} for \textbf{digital payments} and \textbf{banking services}.}
-            \resumeItem{\textbf{Collaborated} with cross-functional teams to design and implement \textbf{user-centric features} following \textbf{Agile methodologies}.}
-            \resumeItem{\textbf{Led} technical debt reduction initiatives through \textbf{systematic code refactoring} and \textbf{architectural improvements}.}
-            \resumeItem{\textbf{Optimized} app performance using \textbf{GCD} and \textbf{Operation Queues} for \textbf{concurrent task management}.}
-            \resumeItem{\textbf{Established} testing standards incorporating \textbf{TDD} and \textbf{BDD practices}.}
+            \resumeItem{\textbf{Led} iOS development of the \textbf{OneLoad} and \textbf{OneZapp} fintech apps (Swift, SwiftUI, UIKit), processing \textbf{300K daily transactions} with sandboxed mini-apps for top-ups, utility bills and \textbf{IBFT}.}
+            \resumeItem{\textbf{Integrated} IBFT and bank APIs via \textbf{1Link} across \textbf{15+ utility providers} at a \textbf{99.97\% success rate}, and built QR-based cash-in with instant settlement across \textbf{40K+ agents}.}
+            \resumeItem{\textbf{Launched} ``Pay Later'' with auto-repayments and in-app shopping (\textbf{90\% on-time repayments}, \textbf{Swift Charts} risk views) and \textbf{deep links} that cut user-journey steps by \textbf{70\%}.}
+            \resumeItem{\textbf{Raised} crash-free rate from \textbf{50--60\% to 97\%} by reducing technical debt and tuning \textbf{GCD}/\textbf{Operation Queues}, and took unit-test coverage from \textbf{0\% to 80\%+} with \textbf{TDD}/\textbf{BDD} standards in an \textbf{Agile} setup.}
         \resumeItemListEnd
 
-    \resumeSubheadingExperience
+    \resumeEntry
         {Systems Limited}{Lahore, Pakistan}
-        {Sr. Software Engineer iOS}{Dec 2018 -- Dec 2022}
-        {A technology services and consulting company.}
+        {Senior Software Engineer iOS}{Dec 2018 -- Dec 2022}
         \resumeItemListStart
-            \resumeItem{\textbf{Directed} iOS development team in delivering \textbf{enterprise-grade mobile solutions}.}
-            \resumeItem{\textbf{Architected and implemented} \textbf{payment processing framework} for third-party integrations.}
-            \resumeItem{\textbf{Pioneered} \textbf{deep linking} implementation to enhance user navigation and engagement.}
-            \resumeItem{\textbf{Engineered} data persistence solutions using \textbf{SQLite} and \textbf{SharedPreferences}.}
-            \resumeItem{\textbf{Researched and integrated} emerging technologies to maintain a \textbf{competitive edge}.}
+            \resumeItem{\textbf{Led} a \textbf{6-member iOS team} across multiple products delivering enterprise-grade mobile solutions, and \textbf{architected} a \textbf{payment processing framework} for third-party integrations handling \textbf{300K daily transactions}.}
+            \resumeItem{\textbf{Implemented} \textbf{deep linking} across payments, bill payments, transfers and mobile load flows; built local persistence with \textbf{SQLite} and \textbf{UserDefaults}.}
         \resumeItemListEnd
 
-    \resumeSubheadingExperience
+    \resumeEntry
         {Developers Clan}{Lahore, Pakistan}
-        {Sr. Software Engineer}{Jan 2018 -- Dec 2018}
-        {A technology services and consulting company.}
+        {Senior Software Engineer}{Jan 2018 -- Dec 2018}
         \resumeItemListStart
-            \resumeItem{\textbf{Promoted} to senior role within first year, \textbf{leading a team} of 5 iOS developers.}
-            \resumeItem{\textbf{Integrated} multiple third-party SDKs including \textbf{Google Maps}, \textbf{Stripe}, and \textbf{Firebase}.}
-            \resumeItem{\textbf{Implemented} \textbf{geofencing} and \textbf{localization features} for region-specific content delivery.}
-            \resumeItem{\textbf{Designed adaptive UIs} supporting all iOS device form factors.}
-            \resumeItem{\textbf{Developed offline-first architecture} using \textbf{Core Data} and \textbf{Realm}.}
+            \resumeItem{\textbf{Promoted} to senior role within the first year, \textbf{leading a team of 5 iOS developers} and integrating third-party SDKs including \textbf{Google Maps}, \textbf{Stripe} and \textbf{Firebase}.}
+            \resumeItem{\textbf{Added} \textbf{geofencing} and \textbf{localization} for region-specific content delivery, with adaptive UIs supporting all iOS device form factors.}
+            \resumeItem{\textbf{Developed} an \textbf{offline-first} architecture using \textbf{Core Data} and \textbf{Realm}.}
         \resumeItemListEnd
 
-    \resumeSubheadingExperience
+    \resumeEntry
         {Originator Business and I.T Solutions}{Lahore, Pakistan}
         {Software Engineer}{Feb 2016 -- Dec 2017}
-        {An IT solutions provider offering various business-related technology services.}
         \resumeItemListStart
-            \resumeItem{\textbf{Transitioned} from intern to full developer, contributing to multiple iOS projects.}
-            \resumeItem{\textbf{Engineered} media playback features using \textbf{AVKit} for local and streaming content.}
-            \resumeItem{\textbf{Implemented} real-time chat functionality with \textbf{Firebase backend}.}
-            \resumeItem{\textbf{Integrated} social authentication including \textbf{Facebook Login}.}
-            \resumeItem{\textbf{Developed} in-app purchase system for \textbf{digital content subscriptions}.}
+            \resumeItem{\textbf{Progressed} from intern to full-time iOS developer, contributing to multiple projects including \textbf{AVKit} media playback for local and streaming content.}
+            \resumeItem{\textbf{Built} real-time chat on a \textbf{Firebase} backend and social authentication with \textbf{Facebook Login}.}
+            \resumeItem{\textbf{Developed} an \textbf{in-app purchase} system for digital content subscriptions.}
         \resumeItemListEnd
 
   \resumeSubHeadingListEnd
-\vspace{-15pt}
+\vspace{-6pt}
 
 %-----------PROJECTS-----------------
 \ifshowprojects
 \section{PROJECTS}
     \resumeSubHeadingListStart
         \resumeProjectHeadingLink
-        {OneZapp}{https://onezapp.pk}{SwiftUI, CryptoKit, truID, Keychain, SSL Pinning, Biometrics}{Apr 2025 -- Oct 2025}
+        {SGSerializable (Open Source)}{github.com/rehannali/SGSerializable}{Swift, Property Wrappers, Generics, Codable, Swift Package Manager, CircleCI}{Oct 2022 -- Present}
         \resumeItemListStart
-            \projectItem{Mini-App Platform \& Digital Payments}{Engineered sandboxed financial mini-apps (\textbf{top-ups}, \textbf{utility bills}, \textbf{IBFT}) achieving \textbf{100\% transaction integrity}; integrated \textbf{IBFT} at \textbf{99.97\% success rate} with \textbf{15+ utility providers} via \textbf{1Link} and dynamic \textbf{PDF receipts}.}
-            \projectItem{Multi-Channel Wallet Funding}{Built \textbf{QR-based cash-in} system across \textbf{40K+ agents} with instant settlement and direct \textbf{bank API} top-ups via \textbf{1Link}.}
-        \resumeItemListEnd
-        \resumeProjectHeadingLink
-        {Oneload}{https://oneloadpk.com}{Swift, UIKit, Alamofire, Siren, Swift Charts, Fastlane, Biometrics, PDFKit}{Jan 2018 -- Oct 2025}
-        \resumeItemListStart
-            \projectItem{Unified Financial Ecosystem}{Processed \textbf{500K+ monthly transactions}—telco top-ups, utility bills, international vouchers, BookMe travel, and \textbf{40K+ retail} cash-in kiosks; \textbf{universal deep links} with custom token encoding cut user journey steps by \textbf{70\%}.}
-            \projectItem{Credit \& Shopping Ecosystem}{Built iOS \textbf{‘Pay Later’} with auto-repayments and in-app shopping, achieving \textbf{90\% on-time repayments} with risk visualization via \textbf{Swift Charts}.}
-        \resumeItemListEnd
-        \resumeProjectHeadingLink
-        {SGSerializable}{https://github.com/rehannali/SGSerializable}{Property Wrapper, Generics, Codable, SwiftPM, CircleCI}{Oct 2022 -- Present}
-        \resumeItemListStart
-            \projectItem{Open-Source Swift Framework}{Leveraged \textbf{PropertyWrappers} to cut \textbf{JSON boilerplate by 95\%}, reducing model setup from 15 min to \textbf{30 sec}; solved \textbf{type mismatches}, \textbf{optional defaults}, and \textbf{nested parsing} without boilerplate.}
+            \projectItem{Open-Source Swift Framework}{Leveraged \textbf{property wrappers} to cut \textbf{JSON boilerplate by 95\%}, reducing model setup from 15 min to \textbf{30 sec} and handling type mismatches, optional defaults and nested parsing.}
             \projectItem{Community Adoption}{\textbf{10+ production apps} adopted the framework, reducing JSON parsing crashes by \textbf{85\%}.}
         \resumeItemListEnd
         \resumeProjectHeadingLink
-        {Byte}{https://itunes.apple.com/us/app/byte/id889279286?mt=8}{Swift, UIKit, Realm, Cloudinary, Apple Pay, Braintree, Zendesk}{Oct 2018}
+        {OneZapp}{onezapp.pk}{SwiftUI, CryptoKit, truID, Keychain, SSL Pinning, Biometrics}{Apr 2025 -- Oct 2025}
         \resumeItemListStart
-            \projectItem{Food Discovery Platform}{Built visual menu, geolocation deals, and \textbf{geofencing-based rewards} for \textbf{1K+ restaurants}, boosting engagement by \textbf{40\%} and retention by \textbf{35\%}.}
-            \projectItem{Performance Optimization}{Reduced image load time by \textbf{60\%} via caching; achieved crash rate $<$\textbf{0.1\%} using Realm persistence.}
+            \projectItem{Mini-App Platform \& Digital Payments}{Engineered sandboxed financial mini-apps (\textbf{top-ups}, \textbf{utility bills}, \textbf{IBFT}) with \textbf{100\% transaction integrity} and dynamic \textbf{PDF receipts}.}
+            \projectItem{Multi-Channel Wallet Funding}{Built \textbf{QR-based cash-in} with instant settlement and direct \textbf{bank API} top-ups via \textbf{1Link}.}
         \resumeItemListEnd
         \resumeProjectHeadingLink
-        {Wish Wash}{https://itunes.apple.com/bh/app/id1178063274?mt=8}{Objective-C, AFNetworking, Payment, Multi-Lingual}{Feb 2018}
+        {OneLoad}{oneloadpk.com}{Swift, UIKit, Alamofire, Siren, Swift Charts, Fastlane, Biometrics, PDFKit}{Jan 2018 -- Oct 2025}
         \resumeItemListStart
-            \projectItem{On-Demand Laundry App}{Developed \textbf{3-step onboarding} cutting signup time by \textbf{50\%}, scaling to \textbf{500+ weekly orders}; enabled wash/iron/dry-clean with real-time tracking, boosting order value by \textbf{30\%}.}
-            \projectItem{Trust \& Engagement}{Verified cleaner profiles improved trust scores by \textbf{40\%}; update adoption reached \textbf{85\%}.}
+            \projectItem{Unified Financial Ecosystem}{Delivered telco top-ups, utility bills, international vouchers, BookMe travel and retail cash-in kiosks in one app, with \textbf{universal deep links} and custom token encoding.}
+            \projectItem{Credit \& Shopping Ecosystem}{Built the iOS ``Pay Later'' flow with auto-repayments and in-app shopping, with risk visualization via \textbf{Swift Charts}.}
         \resumeItemListEnd
-        \resumeProjectHeadingLink
-        {ShopTrav}{https://itunes.apple.com/us/app/shoptrav/id1228340656?ls=1&mt=8}{Swift, UIKit, Facebook Kit, Alamofire, CoreLocation}{Aug 2018}
-        \resumeItemListStart
-            \projectItem{Cross-Border Delivery Network}{Matched shoppers with travelers for \textbf{1,000+ international deliveries}, cutting delivery time by \textbf{30\%} and improving logistics efficiency by \textbf{40\%}.}
-            \projectItem{Engagement \& Efficiency}{Boosted retention by \textbf{25\%} via feedback-driven updates; cut battery usage by \textbf{20\%} through CoreLocation optimizations with \textbf{35\%} tracking accuracy gain.}
-        \resumeItemListEnd
-        \resumeProjectHeadingLink
-        {Pretty Pointy}{https://itunes.apple.com/us/app/id1367552041?ls=1&mt=8}{Google Calendar, Google Maps, SnapKit, Branch, KingFisher, Multi-Lingual}{June 2018}
-        \resumeItemListStart
-            \projectItem{Multilingual Booking Platform}{English/Arabic \textbf{RTL} localization with instant switching expanded MENA reach by \textbf{200\%}; calendar-synced booking with in-app chat cut no-shows by \textbf{25\%} and improved retention by \textbf{40\%}.}
-            \projectItem{Product Impact}{Boosted review rates \textbf{40\%}, reduced booking steps \textbf{50\%}, and maintained \textbf{99\% uptime} on availability services.}
-        \resumeItemListEnd
+        \item \small\textbf{Earlier App Store apps (2018):} Byte, Wish Wash, ShopTrav and Pretty Pointy -- Swift, Objective-C, Realm, Apple Pay, Braintree, Core Location, Google Maps, geofencing, Arabic RTL localization. % TODO: per-app metrics were removed for length; see git history (dfbcf4c) if you want to restore any
     \resumeSubHeadingListEnd
-\vspace{-15pt}
+\vspace{-2pt}
 \fi
 
-%-----------STRENGTHS-----------
-% \section{STRENGTHS}
-%     \additionalItem{sitemap}{Technical Proficiency}{Proficient in various architectural patterns and methodologies, ensuring robust software development.}
-%     \additionalItem{heart}{Self-Motivated}{Self-Motivated and quick to learn new technologies, thrives in collaborative teams.}
-% \vspace{-15pt}
-
-%-----------KEY ACHIEVEMENTS & INTERESTS-----------
-\section{KEY ACHIEVEMENTS \& INTERESTS}
-    \additionalItem{check}{Leadership in Fintech Product Development}{Successfully led iOS development teams, delivering key fintech products that enhanced user experience and streamlined processes.}
-    \additionalItem{bolt}{Open Source Contribution}{Active participation in opensource development at GitHub and contributing to community discussions.}
-\vspace{-15pt}
+%-----------EDUCATION-----------
+\section{EDUCATION}
+  \resumeSubHeadingListStart
+    \resumeEntry
+      {University of Central Punjab}{Lahore, Pakistan}
+      {Bachelor in Computer Science}{2012 -- 2016}
+  \resumeSubHeadingListEnd
+\vspace{-4pt}
 
 %-----------CERTIFICATIONS-----------
 \section{CERTIFICATIONS}
@@ -387,33 +231,9 @@
         {Certificate No: UC-71bce9dd-5c4c-4347-a71c-4065f6ad7b8e}{2018}
     \resumeCertification
         {Maximize Productivity With AI Tools}{Coursera (Google)}
-        {\href{https://www.coursera.org/account/accomplishments/verify/SNCJIM8QAZ2A}{\underline{Certificate ID: SNCJIM8QAZ2A}}}{2026}
+        {\href{https://www.coursera.org/account/accomplishments/verify/SNCJIM8QAZ2A}{Certificate ID: SNCJIM8QAZ2A}}{2026}
     \resumeCertification
         {Google AI Essentials}{Coursera (Google)}
-        {\href{https://www.coursera.org/account/accomplishments/specialization/certificate/4FMGKEJQ4LVO}{\underline{Certificate ID: 4FMGKEJQ4LVO}}}{2026}
-\vspace{-15pt}
-
-%-----------EDUCATION-----------
-\section{EDUCATION}
-  \resumeSubHeadingListStart
-    \resumeSubheading
-      {University of Central Punjab}{2012 – 2016}
-      {Bachelor in Computer Science}{Lahore, Pakistan}
-  \resumeSubHeadingListEnd
-
-%-------------------------------------------
-
-% -----------ADDITIONAL INFORMATION(Helper)-----------
-
-% --------Multiple Positions Heading------------
-  %  \resumeSubSubheading
-  %   {Software Engineer I}{Oct 2014 -- Sep 2016}
-  %   \resumeItemListStart
-  %      \resumeItem{Apache Beam}
-  %        {Apache Beam is a unified model for defining both batch and streaming data-parallel processing pipelines}
-  %   \resumeItemListEnd
-
-%-------------------------------------------
-
+        {\href{https://www.coursera.org/account/accomplishments/specialization/certificate/4FMGKEJQ4LVO}{Certificate ID: 4FMGKEJQ4LVO}}{2026}
 
 \end{document}
